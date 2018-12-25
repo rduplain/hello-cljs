@@ -1,0 +1,8 @@
+.cpcache
+.*[_-]history
+*.log
+node_modules
+.nrepl-port
+/out
+.*repl*
+/target
