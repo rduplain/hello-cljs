@@ -1,7 +1,9 @@
+.clj-install
 .cpcache
 .*[_-]history
 *.log
 node_modules
+.npm-install
 .nrepl-port
 /out
 .*repl*

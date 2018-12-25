@@ -15,13 +15,17 @@ test-refresh: install clj-test-refresh
 clj-%: clj-command
 	@clj -A$*
 
-clj-install: clj-command
-	@clj -Stree
+clj-install: clj-command .clj-install
+	@true # Override wildcard recipe.
 
 clj-repl: node-command
 
 clj-test-refresh: clj-command
 	@clj -Atest --watch src
+
+.clj-install: deps.edn
+	@clj -Stree
+	@touch $@
 
 
 ### Node.js ###
@@ -29,9 +33,13 @@ clj-test-refresh: clj-command
 npm-%: npm-command
 	@npm $*
 
-npm-install: npm-command
+npm-install: npm-command .npm-install
+	@true # Override wildcard recipe.
+
+.npm-install: package.json
 	@npm install
 	@npm ls --depth=0
+	@touch $@
 
 pkg: build
 	@echo "building binaries ..."
