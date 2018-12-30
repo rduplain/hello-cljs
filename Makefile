@@ -42,23 +42,23 @@ npm-install: npm-command .npm-install
 	@touch $@
 
 shadow-cljs-%-app:
-	@./node_modules/.bin/shadow-cljs $* app
+	@./node_modules/.bin/shadow-cljs --force-spawn $* app
 
 shadow-cljs-repl-app:
 	@echo "Run this in a separate terminal:"
 	@echo
 	@echo "    node ./target/hello.js"
 	@echo
-	@./node_modules/.bin/shadow-cljs cljs-repl app
+	@./node_modules/.bin/shadow-cljs --force-spawn cljs-repl app
 
 shadow-cljs-test: shadow-cljs-compile-test
 	@node ./target/test.js
 
 shadow-cljs-%-test:
-	@./node_modules/.bin/shadow-cljs $* test -A:test
+	@./node_modules/.bin/shadow-cljs --force-spawn $* test -A:test
 
 shadow-cljs-%-test-autorun:
-	@./node_modules/.bin/shadow-cljs $* test-autorun -A:test
+	@./node_modules/.bin/shadow-cljs --force-spawn $* test-autorun -A:test
 
 pkg:
 	@echo "building binaries ..."
