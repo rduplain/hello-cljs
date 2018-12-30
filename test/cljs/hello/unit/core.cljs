@@ -3,5 +3,5 @@
    [cljs.test :refer-macros [is deftest]]
    [hello.core]))
 
-(deftest foo
+(deftest test-whom
   (is (= (hello.core/whom) "world")))
