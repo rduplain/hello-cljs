@@ -1,7 +1,7 @@
 ### Recipes ###
 
 all: bin
-bin: install | build pkg
+bin: install | build pkg-renamed
 build: install echo-building shadow-cljs-release-app
 install: echo-clj clj-install echo-npm npm-install
 repl: install shadow-cljs-repl-app
@@ -67,8 +67,15 @@ pkg:
 		-t node10-linux-x64,node10-mac-x64,node10-win-x64 \
 		--out-path ./target/pkg \
 		./target/hello.js
-	@echo "-- ./target/pkg/ --"
-	@ls -1 ./target/pkg
+
+pkg-renamed: pkg
+	@mkdir -p ./target/bin-linux ./target/bin-mac ./target/bin-windows
+	@mv ./target/pkg/hello-linux ./target/bin-linux/hello
+	@mv ./target/pkg/hello-macos ./target/bin-mac/hello
+	@mv ./target/pkg/hello-win.exe ./target/bin-windows/hello.exe
+	@rm -fr ./target/pkg/
+	@echo "-- redistributable binaries --"
+	@find ./target/bin-* -type f | sort
 
 
 ### Utility ###

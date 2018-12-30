@@ -56,7 +56,7 @@ Development:
 
 Production:
 
-* After running `make`, find redistributable binaries in `./target/pkg/`.
+* After running `make`, find redistributable binaries in `./target/bin-*/`.
 * The redistributable binaries run natively without dependencies on GNU/Linux,
   Mac OS X, and Windows, respectively.
 * The binaries include their own Node.js runtime and therefore are relatively
