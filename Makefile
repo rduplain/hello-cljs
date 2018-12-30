@@ -13,15 +13,13 @@ test-release: install | test bin test-bin
 
 ### Clojure ###
 
-clj-%: clj-command
+clj-%:
 	@clj -A$*
 
-clj-install: clj-command .clj-install
+clj-install: .clj-install
 	@true # Override wildcard recipe.
 
-clj-repl: node-command
-
-clj-test-refresh: clj-command
+clj-test-refresh:
 	@clj -Atest --watch src
 
 .clj-install: deps.edn
@@ -31,10 +29,10 @@ clj-test-refresh: clj-command
 
 ### Node.js ###
 
-npm-%: npm-command
+npm-%:
 	@npm $*
 
-npm-install: npm-command .npm-install
+npm-install: .npm-install
 	@true # Override wildcard recipe.
 
 .npm-install: package.json
@@ -84,9 +82,6 @@ test-bin:
 
 
 ### Utility ###
-
-%-command:
-	@which $* >/dev/null || ( echo "Requires '$*' command."; false )
 
 echo-%:
 	@echo "$* ..."
