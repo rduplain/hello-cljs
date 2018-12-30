@@ -5,27 +5,65 @@ to Unix tradition with a build oriented toward general-purpose programming
 (with Node.js, and not the browser). **Build redistributable native binaries
 with ClojureScript and npm libraries.**
 
+While Java is a dependency of Clojure, this project focuses exclusively on
+building ClojureScript for Node.js. The same workflow applies to other
+JavaScript targets, namely the browser, if the Clojure deps and npm packages
+support the runtime. The redistributable binary only applies with a Node.js
+target, but this workflow can produce a .js file suitable for other JavaScript
+targets.
+
+Of particular note, both Clojure and JavaScript have many options available to
+build a project. This demonstration project arrives at many decisions aligned
+with Unix expectations:
+
+* Use [Clojure command line tools][clojure cli] directly, with deps.edn.
+* Use [Node.js and npm][node.js] directly, with package.json.
+* Use [shadow-cljs][shadow-cljs] to build .js from deps.edn and `node_modules`.
+* Use [pkg][pkg] to build binaries from `node_modules` and the built .js file.
+* Use a Makefile ([GNU Make][make]) to provide a simple developer workflow.
+
+[clojure cli]: https://clojure.org/guides/getting_started
+[node.js]: https://nodejs.org/
+[shadow-cljs]: http://shadow-cljs.org/
+[pkg]: https://github.com/zeit/pkg
+[make]: https://www.gnu.org/software/make/
+
 
 ### Dependencies
+
+Development:
 
 * [Clojure command line tools][clojure cli]. Tested with Clojure v1.9.0.
 * [Node.js and npm][node.js]. Tested with Node.js v10.14.0 and npm v6.5.0.
 * [GNU Make][make]. Available on most Unix systems. Tested with GNU Make v3.81.
+* A Unix system such as GNU/Linux or Mac OS X.
 
-[clojure cli]: https://clojure.org/guides/getting_started
-[node.js]: https://nodejs.org/
-[make]: https://www.gnu.org/software/make/
+**Production has no dependencies. The redistributable binaries run natively on
+GNU/Linux, Mac OS X, and Windows, respectively.**
 
 
 ### Workflow
 
+Development:
+
 * `make bin` (default on `make`) -- Create redistributable binaries.
-* `make build` -- Build ClojureScript project into a single .js file.
+* `make build` -- Build the ClojureScript project into a single .js file.
 * `make install` -- Install packages; this is run automatically.
 * `make repl` -- Run a ClojureScript REPL. (Use an IDE instead, below.)
 * `make outdated` -- Check for outdated packages.
 * `make test` -- Run project tests.
 * `make test-refresh` -- Run project tests and watch for changes.
+
+Production:
+
+* After running `make`, find redistributable binaries in `./target/pkg/`.
+* The redistributable binaries run natively without dependencies on GNU/Linux,
+  Mac OS X, and Windows, respectively.
+* The binaries include their own Node.js runtime and therefore are relatively
+  large (tens of megabytes) compared to other system executables.
+* If needed, these binaries compress by a factor of 3 with `bzip2`. A release
+  step could publish compressed binaries with an install step which
+  decompresses and puts the binary on the PATH.
 
 
 ### Integrated Development Environment
@@ -50,7 +88,6 @@ CIDER repl before starting any other shadow-cljs process.
 [shadow-cljs][shadow-cljs] loads any module found in the `node_modules`
 directory. See [this guide][shadow-cljs npm] for example require forms.
 
-[shadow-cljs]: http://shadow-cljs.org/
 [shadow-cljs npm]: https://clojureverse.org/t/guide-on-how-to-use-import-npm-modules-packages-in-clojurescript/2298/1
 
 
