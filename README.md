@@ -46,7 +46,8 @@ GNU/Linux, Mac OS X, and Windows, respectively.**
 
 Development:
 
-* `make bin` (default on `make`) -- Create redistributable binaries.
+* `make` -- Test, create redistributable binaries, and test platform binary.
+* `make bin` -- Create redistributable binaries.
 * `make build` -- Build the ClojureScript project into a single .js file.
 * `make install` -- Install packages; this is run automatically.
 * `make repl` -- Run a ClojureScript REPL. (Use an IDE instead, below.)

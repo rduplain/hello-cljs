@@ -1,0 +1,22 @@
+#!/bin/bash
+# Test project-built binary.
+
+set -e
+
+test_suite() {
+    test_default
+    test_with_args
+
+    echo "Ran 2 tests."
+}
+
+test_default() {
+    assert_equal "$($EXE)" "Hello, [34mworld[0m![0m"
+}
+
+test_with_args() {
+    assert_equal "$($EXE one two three)" \
+                 "Hello, [34mone two three[0m![0m"
+}
+
+test_suite "$@"

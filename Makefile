@@ -1,13 +1,14 @@
 ### Recipes ###
 
-all: bin
+all: test-release bin
 bin: install | build pkg-renamed
 build: install echo-building shadow-cljs-release-app
 install: echo-clj clj-install echo-npm npm-install
 repl: install shadow-cljs-repl-app
 outdated: install clj-outdated npm-outdated
-test: install shadow-cljs-test
+test: install echo-testing shadow-cljs-test
 test-refresh: install shadow-cljs-watch-test-autorun
+test-release: install | test bin test-bin
 
 
 ### Clojure ###
@@ -76,6 +77,10 @@ pkg-renamed: pkg
 	@rm -fr ./target/pkg/
 	@echo "-- redistributable binaries --"
 	@find ./target/bin-* -type f | sort
+
+test-bin:
+	@echo "-- testing redistributable binary --"
+	@NAME=hello bash ./test/bash/test_bin
 
 
 ### Utility ###

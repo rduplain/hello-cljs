@@ -1,0 +1,96 @@
+#!/bin/bash
+# Run tests against binary packaged for the present platform.
+
+# Required environment variables:
+#
+# NAME                            # Name of the project, matching exe basename.
+
+# Exported functions and values:
+declare -f assert_equal
+declare EXE                       # Path to project-built platform binary.
+
+# Program variables:
+declare PROG                      # Name of this test program.
+declare TARGET                    # Path to project-built 'target' directory.
+
+assert_equal() {
+    # Assert strings are equal.
+
+    local test expected actual
+
+    if [ $# -eq 3 ]; then
+        test=$1
+        actual=$2
+        expected=$3
+    else
+        actual=$1
+        expected=$2
+    fi
+
+    if [ "$actual" != "$expected" ]; then
+        if [ -n "$test" ]; then
+            echo "test:     $test" >&2
+        fi
+        echo "expected: $expected" >&2
+        echo "  actual: $actual"   >&2
+        return 1
+    fi
+}
+
+resolve_exe() {
+    # Resolve path to project-built binary based on the present platform.
+
+    case "$OSTYPE" in
+        linux*)
+            EXE="$TARGET/bin-linux/$NAME"
+            ;;
+        darwin*)
+            EXE="$TARGET/bin-mac/$NAME"
+            ;;
+        *)
+            echo "$PROG: unsupported OS: $OSTYPE" >&2
+            return 2
+            ;;
+    esac
+
+    echo "Testing binary: $EXE"
+}
+
+main() {
+    # Run tests.
+
+    # Exit immediately if a command error or non-zero return occurs.
+    set -e
+
+    # Test required environment variables.
+    if [ -z "$NAME" ]; then
+        echo "$PROG: set NAME with project name, matching exe basename." >&2
+        return 2
+    fi
+
+    # The name of this test program.
+    PROG="$( basename "${BASH_SOURCE[0]}" )"
+
+    # Find directory containing this test program.
+    local dir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+    # Find root directory containing project-built binaries.
+    TARGET="$( cd -P "$dir"/../../target && pwd )"
+
+    if [ -z "$TARGET" ]; then
+        echo "$PROG: cannot find project-built 'target' directory." >&2
+        return 2
+    fi
+
+    # Resolve EXE.
+    resolve_exe
+
+    # Export variables for use in subprocesses.
+    export EXE
+    export -f assert_equal
+
+    # Run test suite.
+    exec "$dir"/test_suite
+}
+
+main "$@"
