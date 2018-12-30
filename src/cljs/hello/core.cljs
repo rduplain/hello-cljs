@@ -1,15 +1,16 @@
 (ns hello.core
   (:require [cljs.nodejs :as node]
-            ["terminal-kit" :rename {terminal term}]))
+            [clojure.string :refer [join]]
+            ["string-kit" :refer [format]]))
 
-(defn whom
-  []
-  "world")
+(def default ["world"])
 
 (defn -main
-  []
-  (->> (whom)
-       (term "Hello, ^b%s^:!\n")))
+  [& args]
+  (->> (or args default)
+       (join " ")
+       (format "Hello, ^b%s^:!")
+       (println)))
 
 (node/enable-util-print!)
 (set! *main-cli-fn* -main)
