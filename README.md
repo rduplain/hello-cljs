@@ -21,7 +21,7 @@ to Unix tradition with a build oriented toward general-purpose programming
 * `make bin` (default on `make`) -- Create redistributable binaries.
 * `make build` -- Build ClojureScript project into a single .js file.
 * `make install` -- Install packages; this is run automatically.
-* `make repl` -- Run a ClojureScript REPL.
+* `make repl` -- Run a ClojureScript REPL. (Use an IDE instead, below.)
 * `make outdated` -- Check for outdated packages.
 * `make test` -- Run project tests.
 * `make test-refresh` -- Run project tests and watch for changes.
