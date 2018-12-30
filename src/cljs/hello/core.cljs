@@ -1,7 +1,6 @@
 (ns hello.core
   (:require [cljs.nodejs :as node]
-            [goog.string :refer [format]]
-            [goog.string.format]))
+            ["terminal-kit" :rename {terminal term}]))
 
 (defn whom
   []
@@ -10,8 +9,7 @@
 (defn -main
   []
   (->> (whom)
-       (format "Hello, %s!")
-       (println)))
+       (term "Hello, ^b%s^:!\n")))
 
 (node/enable-util-print!)
 (set! *main-cli-fn* -main)

@@ -1,10 +1,17 @@
 {
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "terminal-kit": "1.26.8"
+  },
   "devDependencies": {
+    "cryptiles": ">=4.1.2",
     "pkg": "4.3.5",
     "shadow-cljs": "2.7.9",
-    "source-map-support": "0.5.9",
-    "cryptiles": ">=4.1.2"
+    "source-map-support": "0.5.9"
+  },
+  "pkg": {
+    "scripts": [
+      "node_modules/terminal-kit/lib/**/*.js"
+    ]
   }
 }

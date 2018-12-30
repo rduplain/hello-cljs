@@ -63,7 +63,8 @@ shadow-cljs-%-test-autorun:
 pkg:
 	@echo "building binaries ..."
 	@./node_modules/.bin/pkg \
-		-t node10-linux-x64,node10-mac-x64,node10-win-x64 \
+		-c package.json \
+		-t node10-linux-x64,node10-mac-x64 \
 		--out-path ./target/pkg \
 		./target/hello.js
 	@echo "-- ./target/pkg/ --"
