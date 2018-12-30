@@ -29,23 +29,28 @@ to Unix tradition with a build oriented toward general-purpose programming
 
 ### Integrated Development Environment
 
-Run `M-x cider-jack-in-cljs` from Emacs with [CIDER][cider], and specify `node`
-as the ClojureScript REPL type. While `cider-connect` is available, the
-available tools are best run separately.
+Run `M-x cider-jack-in` from Emacs with [CIDER][cider], using `shadow-cljs` as
+the command. Once loaded, in the CIDER clj repl, start a CLJS repl with:
+
+```clojure
+(require '[shadow.cljs.devtools.api :as shadow])
+(shadow/node-repl)
+```
+
+While `cider-connect` is available, the available tools are best run separately
+as to allow repl interactions separately from the build process. Start this
+CIDER repl before starting any other shadow-cljs process.
 
 [cider]: https://docs.cider.mx/
 
 
 ### Using `npm` Packages
 
-It is still an open question on how to use npm packages where the build, REPL,
-and tests all have access to npm packages with a common configuration.
+[shadow-cljs][shadow-cljs] loads any module found in the `node_modules`
+directory. See [this guide][shadow-cljs npm] for example require forms.
 
-References:
-
-* https://cljs.github.io/api/compiler-options/npm-deps
-* https://figwheel.org/docs/npm.html
-* https://gist.github.com/pbostrom/87500c8c3fa43b23cd3ccd764ef767d5
+[shadow-cljs]: http://shadow-cljs.org/
+[shadow-cljs npm]: https://clojureverse.org/t/guide-on-how-to-use-import-npm-modules-packages-in-clojurescript/2298/1
 
 
 ### Wishlist

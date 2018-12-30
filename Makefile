@@ -1,13 +1,13 @@
 ### Recipes ###
 
 all: bin
-bin: install pkg
-build: install echo-building clj-build
+bin: install | build pkg
+build: install echo-building shadow-cljs-release-app
 install: echo-clj clj-install echo-npm npm-install
-repl: install clj-repl
+repl: install shadow-cljs-repl-app
 outdated: install clj-outdated npm-outdated
-test: install clj-test
-test-refresh: install clj-test-refresh
+test: install shadow-cljs-test
+test-refresh: install shadow-cljs-watch-test-autorun
 
 
 ### Clojure ###
@@ -41,7 +41,26 @@ npm-install: npm-command .npm-install
 	@npm ls --depth=0
 	@touch $@
 
-pkg: build
+shadow-cljs-%-app:
+	@./node_modules/.bin/shadow-cljs $* app
+
+shadow-cljs-repl-app:
+	@echo "Run this in a separate terminal:"
+	@echo
+	@echo "    node ./target/hello.js"
+	@echo
+	@./node_modules/.bin/shadow-cljs cljs-repl app
+
+shadow-cljs-test: shadow-cljs-compile-test
+	@node ./target/test.js
+
+shadow-cljs-%-test:
+	@./node_modules/.bin/shadow-cljs $* test -A:test
+
+shadow-cljs-%-test-autorun:
+	@./node_modules/.bin/shadow-cljs $* test-autorun -A:test
+
+pkg:
 	@echo "building binaries ..."
 	@./node_modules/.bin/pkg \
 		-t node10-linux-x64,node10-mac-x64,node10-win-x64 \

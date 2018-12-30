@@ -7,4 +7,5 @@ node_modules
 .nrepl-port
 /out
 .*repl*
+.shadow-cljs
 /target

@@ -1,0 +1,11 @@
+{:deps true
+ :builds {:app {:main hello.core/-main
+                :output-to "target/hello.js"
+                :target :node-script}
+          :test {:ns-regexp "\\.unit\\."
+                 :output-to "target/test.js"
+                 :target :node-test}
+          :test-autorun {:autorun true
+                         :ns-regexp "\\.unit\\."
+                         :output-to "target/test-autorun.js"
+                         :target :node-test}}}
