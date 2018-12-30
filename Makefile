@@ -58,6 +58,3 @@ pkg: build
 
 echo-%:
 	@echo "$* ..."
-
-%-unsupported:
-	@echo unsupported: $*; false
