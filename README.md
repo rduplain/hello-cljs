@@ -2,7 +2,8 @@
 
 This project demonstrates tooling for ClojureScript with workflows appropriate
 to Unix tradition with a build oriented toward general-purpose programming
-(with Node.js, and not the browser).
+(with Node.js, and not the browser). **Build redistributable native binaries
+with ClojureScript and npm libraries.**
 
 
 ### Dependencies
