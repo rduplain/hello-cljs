@@ -106,4 +106,8 @@ directory. See [this guide][shadow-cljs npm] for example require forms.
 [tools deps tree cli]: https://github.com/clojure/tools.deps.alpha/blob/tools.deps.alpha-0.5.460/src/main/clojure/clojure/tools/deps/alpha/script/print_tree.clj#L26
 
 
+---
+
 [build]: https://travis-ci.org/rduplain/hello-cljs.svg?branch=master
+
+Copyright (c) 2018, Ron DuPlain. EPL-1.0 licensed.
