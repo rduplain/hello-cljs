@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - lts/*
+os:
+  - linux
+  - osx
+addons:
+  apt:
+    packages: rlwrap
+  homebrew:
+    packages: clojure
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl https://download.clojure.org/install/linux-install-1.9.0.358.sh | sudo bash -s -; fi
+  - which java clj node npm make
+install:
+  - make install
+script:
+  - make
+cache:
+  directories:
+    - ~/.m2/
+    - ~/.npm/
+    - ~/.pkg-cache/
+    - .cpcache
+    - node_modules
+notifications:
+  email:
+    on_success: never

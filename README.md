@@ -1,5 +1,10 @@
 ## Hello ClojureScript
 
+[![Build Status][build]](https://travis-ci.org/rduplain/hello-cljs)
+
+
+### Overview
+
 This project demonstrates tooling for ClojureScript with workflows appropriate
 to Unix tradition with a build oriented toward general-purpose programming
 (with Node.js, and not the browser). **Build redistributable native binaries
@@ -99,3 +104,6 @@ directory. See [this guide][shadow-cljs npm] for example require forms.
 
 [depot exit]: https://github.com/Olical/depot/blob/v1.5.1/src/depot/outdated/main.clj#L52
 [tools deps tree cli]: https://github.com/clojure/tools.deps.alpha/blob/tools.deps.alpha-0.5.460/src/main/clojure/clojure/tools/deps/alpha/script/print_tree.clj#L26
+
+
+[build]: https://travis-ci.org/rduplain/hello-cljs.svg?branch=master
