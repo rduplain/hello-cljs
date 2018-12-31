@@ -14,16 +14,16 @@ test-release: install | test bin test-bin
 ### Clojure ###
 
 clj-%:
-	@clj -A$*
+	@clojure -A$*
 
 clj-install: .clj-install
 	@true # Override wildcard recipe.
 
 clj-test-refresh:
-	@clj -Atest --watch src
+	@clojure -Atest --watch src
 
 .clj-install: deps.edn
-	@clj -Stree
+	@clojure -Stree
 	@touch $@
 
 
