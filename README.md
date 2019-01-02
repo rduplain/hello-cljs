@@ -116,4 +116,4 @@ directory. See [this guide][shadow-cljs npm] for example require forms.
 [build]: https://travis-ci.org/rduplain/hello-cljs.svg?branch=master
 
 Copyright (c) 2018-2019, Ron DuPlain. EPL-1.0 licensed.
-Use freely under any license, including proprietary work.
+Use freely on projects with any license, including proprietary work.
