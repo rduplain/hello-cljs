@@ -63,14 +63,18 @@ pkg:
 	@echo "building binaries ..."
 	@./node_modules/.bin/pkg \
 		-c package.json \
-		-t node10-linux-x64,node10-mac-x64,node10-win-x64 \
+		-t node10-alpine-x64,node10-linux-x64,node10-mac-x64,node10-win-x64 \
 		--out-path ./target/pkg \
 		./target/hello.js
 
 pkg-renamed: pkg
-	@mkdir -p ./target/bin-linux ./target/bin-mac ./target/bin-windows
+	@mkdir -p ./target/bin-alpine
+	@mv ./target/pkg/hello-alpine ./target/bin-alpine/hello
+	@mkdir -p ./target/bin-linux
 	@mv ./target/pkg/hello-linux ./target/bin-linux/hello
+	@mkdir -p ./target/bin-mac
 	@mv ./target/pkg/hello-macos ./target/bin-mac/hello
+	@mkdir -p ./target/bin-windows
 	@mv ./target/pkg/hello-win.exe ./target/bin-windows/hello.exe
 	@rm -fr ./target/pkg/
 	@echo "-- redistributable binaries --"
