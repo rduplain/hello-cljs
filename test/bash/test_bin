@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Run tests against binary packaged for the present platform.
 
 # Required environment variables:
