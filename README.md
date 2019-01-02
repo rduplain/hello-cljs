@@ -61,6 +61,10 @@ Development:
 * `make test-refresh` -- Run project tests and watch for changes.
 * `make test` -- Run project tests.
 
+To build a binary for FreeBSD, set up a development environment and run `make
+release-for-os` on a FreeBSD system, with resulting binary at `./target/hello`.
+
+
 Production:
 
 * After running `make`, find redistributable binaries in `./target/bin-*/`.

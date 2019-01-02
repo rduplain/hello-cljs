@@ -10,6 +10,10 @@ repl: install shadow-cljs-repl-app
 test-refresh: install shadow-cljs-watch-test-autorun
 test: install echo-testing shadow-cljs-test
 
+# Build a binary for FreeBSD using `make release-for-os` on a FreeBSD system.
+bin-for-os: install build pkg-for-os
+release-for-os: install test bin-for-os test-bin
+
 
 ### Clojure ###
 
@@ -65,6 +69,14 @@ pkg:
 		-c package.json \
 		-t node10-alpine-x64,node10-linux-x64,node10-mac-x64,node10-win-x64 \
 		--out-path ./target/pkg \
+		./target/hello.js
+
+pkg-for-os:
+	@echo "building binary ..."
+	@./node_modules/.bin/pkg \
+		-c package.json \
+		-t node10 \
+		--output ./target/hello \
 		./target/hello.js
 
 pkg-renamed: pkg

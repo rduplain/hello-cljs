@@ -40,18 +40,23 @@ assert_equal() {
 resolve_exe() {
     # Resolve path to project-built binary based on the present platform.
 
-    case "$OSTYPE" in
-        linux*)
-            EXE="$TARGET/bin-linux/$NAME"
-            ;;
-        darwin*)
-            EXE="$TARGET/bin-mac/$NAME"
-            ;;
-        *)
-            echo "$PROG: unsupported OS: $OSTYPE" >&2
-            return 2
-            ;;
-    esac
+    if [ -e "$TARGET/$NAME" ]; then
+        # Prefer single binary, if found, which is a build for current OS.
+        EXE="$TARGET/$NAME"
+    else
+        case "$OSTYPE" in
+            linux*)
+                EXE="$TARGET/bin-linux/$NAME"
+                ;;
+            darwin*)
+                EXE="$TARGET/bin-mac/$NAME"
+                ;;
+            *)
+                echo "$PROG: unsupported OS: $OSTYPE" >&2
+                return 2
+                ;;
+        esac
+    fi
 
     echo "Testing binary: $EXE"
 }
