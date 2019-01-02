@@ -7,7 +7,7 @@ install: echo-clj clj-install echo-npm npm-install
 outdated: install clj-outdated npm-outdated
 release: install test bin test-bin
 repl: install shadow-cljs-repl-app
-test-refresh: install shadow-cljs-watch-test-autorun
+test-refresh: install shadow-cljs-watch-test-refresh
 test: install echo-testing shadow-cljs-test
 
 # Build a binary for FreeBSD using `make release-for-os` on a FreeBSD system.
@@ -60,8 +60,8 @@ shadow-cljs-test: shadow-cljs-compile-test
 shadow-cljs-%-test:
 	@./node_modules/.bin/shadow-cljs --force-spawn $* test -A:test
 
-shadow-cljs-%-test-autorun:
-	@./node_modules/.bin/shadow-cljs --force-spawn $* test-autorun -A:test
+shadow-cljs-%-test-refresh:
+	@./node_modules/.bin/shadow-cljs --force-spawn $* test-refresh -A:test
 
 pkg:
 	@echo "building binaries ..."

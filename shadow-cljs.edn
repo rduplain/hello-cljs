@@ -5,7 +5,7 @@
           :test {:ns-regexp "\\.unit\\."
                  :output-to "target/test.js"
                  :target :node-test}
-          :test-autorun {:autorun true
+          :test-refresh {:autorun true
                          :ns-regexp "\\.unit\\."
-                         :output-to "target/test-autorun.js"
+                         :output-to "target/test-refresh.js"
                          :target :node-test}}}
