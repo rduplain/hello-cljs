@@ -67,14 +67,14 @@ main() {
     # Exit immediately if a command error or non-zero return occurs.
     set -e
 
+    # The name of this test program.
+    PROG="$( basename "${BASH_SOURCE[0]}" )"
+
     # Test required environment variables.
     if [ -z "$NAME" ]; then
         echo "$PROG: set NAME with project name, matching exe basename." >&2
         return 2
     fi
-
-    # The name of this test program.
-    PROG="$( basename "${BASH_SOURCE[0]}" )"
 
     # Find directory containing this test program.
     local dir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
