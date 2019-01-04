@@ -84,7 +84,7 @@ the command. Once loaded, in the CIDER clj repl, start a CLJS repl with:
 
 ```clojure
 (require '[shadow.cljs.devtools.api :as shadow])
-(shadow/node-repl)
+(shadow/node-repl :app)
 ```
 
 While `cider-connect` is available, the available tools are best run separately
