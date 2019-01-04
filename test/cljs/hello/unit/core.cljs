@@ -1,7 +1,6 @@
 (ns hello.unit.core
-  (:require
-   [cljs.test :refer-macros [is deftest]]
-   [hello.core :as core]))
+  (:require [cljs.test :refer-macros [is deftest]]
+            [hello.core :as core]))
 
 (deftest test-default-value
   (is (= core/default ["world"])))
