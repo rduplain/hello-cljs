@@ -135,8 +135,9 @@ In development:
 * In the cljs test matching the macro definition, require the namespaces which
   will allow the expanded macro to fully resolve its references.
 
-These steps are only needed in development; the production build compiles a
-single .js and Node.js will find the relevant references.
+These steps are only strictly required in development; the production build
+compiles a single .js and Node.js and may find the relevant references. Test
+accordingly.
 
 [clojurescript differences]: https://clojurescript.org/about/differences
 
