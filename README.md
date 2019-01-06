@@ -87,6 +87,10 @@ the command. Once loaded, in the CIDER clj repl, start a CLJS repl with:
 (shadow/node-repl :app)
 ```
 
+Note that shadow-cljs [has a fake piggieback][shadow-cljs fake piggieback]; use
+the shadow-cljs snippet above in a clj repl to create the cljs repl instead of
+using `M-x cider-jack-in-cljs`.
+
 While `cider-connect` is available, the available tools are best run separately
 as to allow repl interactions separately from the build process. Start this
 CIDER repl before starting any other shadow-cljs process.
@@ -100,6 +104,7 @@ CIDER repl before starting any other shadow-cljs process.
 directory. See [this guide][shadow-cljs npm] for example require forms.
 
 [shadow-cljs npm]: https://clojureverse.org/t/guide-on-how-to-use-import-npm-modules-packages-in-clojurescript/2298/1
+[shadow-cljs fake piggieback]: https://github.com/thheller/shadow-cljs/blob/2.7.10/src/main/shadow/cljs/devtools/server/fake_piggieback04.clj
 
 
 ### Wishlist
