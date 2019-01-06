@@ -89,7 +89,9 @@ the command. Once loaded, in the CIDER clj repl, start a CLJS repl with:
 
 Note that shadow-cljs [has a fake piggieback][shadow-cljs fake piggieback]; use
 the shadow-cljs snippet above in a clj repl to create the cljs repl instead of
-using `M-x cider-jack-in-cljs`.
+using `M-x cider-jack-in-cljs`. Alternatively, load the snippet above into a
+custom cljs repl type in CIDER with its `cider-register-cljs-repl-type`
+function and use `M-x cider-jack-in-cljs` on that newly registered type.
 
 While `cider-connect` is available, the available tools are best run separately
 as to allow repl interactions separately from the build process. Start this
@@ -105,6 +107,38 @@ directory. See [this guide][shadow-cljs npm] for example require forms.
 
 [shadow-cljs npm]: https://clojureverse.org/t/guide-on-how-to-use-import-npm-modules-packages-in-clojurescript/2298/1
 [shadow-cljs fake piggieback]: https://github.com/thheller/shadow-cljs/blob/2.7.10/src/main/shadow/cljs/devtools/server/fake_piggieback04.clj
+
+
+### Using Macros
+
+Keep in mind that [ClojureScript has differences][clojurescript differences]
+from Clojure:
+
+> ClojureScript’s macros must be defined in a different _compilation stage_
+> than the one from where they are consumed. One way to achieve this is to
+> define them in one namespace and use them from another.
+
+To use a macro in a ClojureScript project, define the macro in a .clj or .cljc
+file. In a cljs `(ns ...)` form, reference macros with the `(:require-macros
+...)` form, which has the same format as `(:require ...)`. Note that
+ClojureScript compiler `:optimizations` set to `:none` in development will
+result in Node.js loading separate files. In effect, this means that any
+namespace references in a macro will not be automatically brought forward when
+requiring the macro during a repl session or when tests are running (unless
+using shadow-cljs `release` subcommand to compile the tests into a single
+file), and names will not resolve and will be undefined in the resulting
+macro-expanded code.
+
+In development:
+
+* In the repl, load the requisite macro definition and its `require` calls.
+* In the cljs test matching the macro definition, require the namespaces which
+  will allow the expanded macro to fully resolve its references.
+
+These steps are only needed in development; the production build compiles a
+single .js and Node.js will find the relevant references.
+
+[clojurescript differences]: https://clojurescript.org/about/differences
 
 
 ### Wishlist
