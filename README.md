@@ -57,7 +57,7 @@ Development:
 * `make install` -- Install packages; this is run automatically.
 * `make outdated` -- Check for outdated packages.
 * `make release` -- Test, build binaries, and test platform binary.
-* `make repl` -- Run a ClojureScript REPL. (Use an IDE instead, below.)
+* `make repl` -- Run a ClojureScript repl. (Use an IDE instead, below.)
 * `make test-refresh` -- Run project tests and watch for changes.
 * `make test` -- Run project tests.
 
