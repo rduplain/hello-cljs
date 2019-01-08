@@ -3,12 +3,21 @@
 [![Build Status][build]](https://travis-ci.org/rduplain/hello-cljs)
 
 
-### Overview
+### Summary
+
+Write code with ClojureScript and npm. Target Node.js. Ship as binaries which
+run natively without dependencies on GNU/Linux, Mac OS X, FreeBSD, and
+Windows. The binaries ship with a snapshot filesystem and an embedded Node
+runtime loaded via ELF/Mach-O/PE32+, respective to the target operating
+system. Code can include npm modules and ClojureScript (Clojure) libraries.
+
+
+### Project Overview
 
 This project demonstrates tooling for ClojureScript with workflows appropriate
 to Unix tradition with a build oriented toward general-purpose programming
-(with Node.js, and not the browser). **Build redistributable native binaries
-with ClojureScript and npm libraries.**
+(with Node.js, and not the browser). Build redistributable native binaries with
+ClojureScript and npm libraries.
 
 While Java is a dependency of Clojure, this project focuses exclusively on
 building ClojureScript for Node.js. The same workflow applies to other
