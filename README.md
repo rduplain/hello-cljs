@@ -22,7 +22,7 @@ build a project. This demonstration project arrives at many decisions aligned
 with Unix expectations:
 
 * Use [Clojure command line tools][clojure cli] directly, with deps.edn.
-* Use [Node.js and npm][node.js] directly, with package.json.
+* Use [Node.js and npm][node.js] directly, with package.json (`node_modules`).
 * Use [shadow-cljs][shadow-cljs] to build .js from deps.edn and `node_modules`.
 * Use [pkg][pkg] to build binaries from `node_modules` and the built .js file.
 * Use a Makefile ([GNU Make][make]) to provide a simple developer workflow.
