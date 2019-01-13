@@ -5,8 +5,8 @@
   },
   "devDependencies": {
     "cryptiles": ">=4.1.2",
-    "pkg": "4.3.6",
-    "shadow-cljs": "2.7.14",
-    "source-map-support": "0.5.9"
+    "pkg": "4.3.7",
+    "shadow-cljs": "2.7.15",
+    "source-map-support": "0.5.10"
   }
 }
