@@ -6,6 +6,7 @@ node_modules
 .npm-install
 .nrepl-port
 /out
+package-lock.json.*
 .*repl*
 .shadow-cljs
 /target
