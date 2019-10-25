@@ -1,12 +1,12 @@
 {
   "private": true,
   "dependencies": {
-    "string-kit": "0.9.12"
+    "string-kit": "0.10.1"
   },
   "devDependencies": {
     "cryptiles": ">=4.1.2",
     "pkg": "4.4.0",
-    "shadow-cljs": "2.8.52",
+    "shadow-cljs": "2.8.67",
     "source-map-support": "0.5.13"
   }
 }
