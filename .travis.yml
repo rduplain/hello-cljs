@@ -21,11 +21,15 @@ script:
 cache:
   directories:
     - /opt/clj
+    - ~/Library/Caches/Homebrew
+    - /usr/local/Homebrew
     - ~/.m2/
     - ~/.npm/
     - ~/.pkg-cache/
     - .cpcache
     - node_modules
+before_cache:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew cleanup; fi
 notifications:
   email:
     on_success: never
