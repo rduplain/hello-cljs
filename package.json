@@ -1,7 +1,7 @@
 {
   "private": true,
   "dependencies": {
-    "string-kit": "0.10.1"
+    "string-kit": "0.10.3"
   },
   "devDependencies": {
     "cryptiles": ">=4.1.2",
