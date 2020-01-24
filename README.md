@@ -164,5 +164,5 @@ accordingly.
 
 [build]: https://travis-ci.org/rduplain/hello-cljs.svg?branch=master
 
-Copyright (c) 2018-2019, Ron DuPlain. EPL-1.0 licensed.
+Copyright (c) 2018-2020, Ron DuPlain. EPL-1.0 licensed.
 Use freely on projects with any license, including proprietary work.
