@@ -1,7 +1,7 @@
 {:deps
  {org.clojure/clojure {:mvn/version "1.10.1"}
-  org.clojure/clojurescript {:mvn/version "1.10.764"}
-  thheller/shadow-cljs {:mvn/version "2.9.8"}}
+  org.clojure/clojurescript {:mvn/version "1.10.773"}
+  thheller/shadow-cljs {:mvn/version "2.9.10"}}
 
  :paths ["src/cljs"]
 
